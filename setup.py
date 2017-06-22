@@ -33,9 +33,9 @@ setup(
         'Programming Language :: Python :: 3',
         'Topic :: Scientific/Engineering :: GIS'],
     description=u"Hypothesis extension for testing with GeoJSON",
-    entry_points="""
-        [rasterio.rio_plugins]
-        edge-features=hypothesis_geojson.scripts.edge_features:main""",
+    entry_points={
+        'console_scripts': [
+            'edge-features = hypothesis_geojson.scripts.edge_features:main']},
     extras_require={
         'test': ['pytest', 'pytest-cov']},
     include_package_date=True,
