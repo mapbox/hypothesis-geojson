@@ -5,4 +5,4 @@ python:
   - "3.5"
   - "3.6"
 install: "pip install -e .[test]"
-script: pytest -v --cov hypothesis_geojson --cov-report term-missing
+script: "py.test -v --cov hypothesis_geojson --cov-report term-missing"
