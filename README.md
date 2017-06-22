@@ -47,12 +47,12 @@ from hypothesis_geojson import features
 
 def find_name(feature):
     """This silly function checks a geojson-like feature
-    for the `name` property. Because `feature['properties']` is
-    always a dictionary or mapping, right?
-
-    *Most* of the time it is. But the spec allows for `null`
-    which translates to a python `None` which doesn't act like
-    a dict and will raise an exception.
+    for the `name` property. 
+    
+    This assumes that feature['properties']
+    is always a dictionary or mapping. But the GeoJSON spec
+    allows for `null` (becomes a python `None`) and causes this
+    to fail on otherwise valid geojson objects.
 
     Would you think to test that? Hypothesis does.
     """
@@ -72,7 +72,8 @@ Now put Hypothesis to work finding a GeoJSON feature that will break the functio
 ```
 ⭆ py.test test_features.py
 ...
-Falsifying example: test_find_name(feature={'geometry': {'coordinates': (0.0, 0.0), 'type': 'Point'},
+Falsifying example: test_find_name(feature={
+ 'geometry': {'coordinates': (0.0, 0.0), 'type': 'Point'},
  'id': u'',
  'properties': None,
  'type': 'Feature'})
