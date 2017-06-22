@@ -1,6 +1,13 @@
 # A Hypothesis Strategy for GeoJSON
 
-Generate GeoJSON data designed to expose edge cases in your code. Implemented as a custom extension of [`hypothesis`](https://github.com/HypothesisWorks/hypothesis-python).
+[![Build Status](https://travis-ci.org/mapbox/hypothesis-geojson.svg?branch=master)](https://travis-ci.org/mapbox/hypothesis-geojson) 
+[![PyPI version](https://badge.fury.io/py/hypothesis-geojson.svg)](https://badge.fury.io/py/hypothesis-geojson)
+
+Generate GeoJSON data designed to expose edge cases in your code. Implemented as a custom extension of [`hypothesis`](https://github.com/HypothesisWorks/hypothesis-python) for Python testing and as a CLI.
+
+```
+pip install hypothesis-geojson
+```
 
 ### What is hypothesis?
 
@@ -8,16 +15,17 @@ Generate GeoJSON data designed to expose edge cases in your code. Implemented as
 
 Hypothesis is rad; read [the manifesto](http://hypothesis.readthedocs.io/en/latest/manifesto.html)
 
-### The key to making great maps is to test your code with ugly data
+**The key to making great maps is to test your code with ugly data**
 
 ![img](docs/img/pretty.jpg)
 
-## Design Goals
+### Design Goals
 
 * Generate GeoJSON using a `hypothesis` [composite strategy](http://hypothesis.readthedocs.io/en/latest/data.html#composite-strategies). 
 * The output must be valid [GeoJSON (RFC7946)](https://tools.ietf.org/html/rfc7946).
 
-## Usage: CLI
+
+### Usage: CLI
 
 The `edge-features` script let's you pipe GeoJSON features to stdout
 
@@ -27,7 +35,7 @@ The `edge-features` script let's you pipe GeoJSON features to stdout
 {"geometry": {"type": "MultiLineString", "coordinates": [[[180.0, -74.59075745399575], [-161.12031862665756, 90.0], [-89.97485098724994, -17.139247698198062]]]}, "type": "Feature", "id": "\u00a0", "properties": {"": null, "196": null, "116": -8.339789954230072e+18}}
 ```
 
-## Usage: Python tests
+### Usage: Python tests
 
 From `test_features.py`
 
@@ -73,6 +81,6 @@ Falsifying example: test_find_name(feature={'geometry': {'coordinates': (0.0, 0.
 :tada: Hypothesis found the bug.
 
 
-## Misc
+### Misc
 
 * At some point we may want to specify more about the **aesthetics**, **geometry validity** and **spatial relationships** between the features (e.g. "Give me 10 rectangular polygons with overlapping edges in this extent").
