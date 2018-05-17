@@ -179,7 +179,7 @@ def feature_collection(draw):
     -----
     Foreign Members and bbox
     """
-    features = draw(lists(features()))
+    feature_list = draw(lists(features()))
     return {
         'type': 'FeatureCollection',
-        'features': features}
+        'features': feature_list}
