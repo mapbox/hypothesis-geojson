@@ -139,7 +139,7 @@ def geometry_collection(draw):
 @composite
 def properties(draw):
     return draw(dictionaries(
-        keys=one_of(text(), integers()),
+        keys=text(),
         values=one_of(
             text(),
             integers(),
@@ -163,8 +163,7 @@ def features(draw):
 
     # foreign members
     if draw(booleans()):
-        key = draw(one_of(
-            integers(), text(), floats(allow_nan=False, allow_infinity=False)))
+        key = draw(text())
         value = draw(one_of(
             integers(), text(), none(), floats(allow_nan=False, allow_infinity=False)))
         feature[key] = value
