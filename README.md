@@ -61,7 +61,7 @@ def find_name(feature):
 
 
 # To use the hypothesis GeoJSON strategy,
-# decorate the test with the @given(feautures())
+# decorate the test with the @given(features())
 @given(features())
 def test_find_name(feature):
     find_name(feature)
