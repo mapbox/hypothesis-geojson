@@ -5,8 +5,9 @@ A hypothesis strategy for generating GeoJSON
 __version__ = '0.1'
 
 
+from hypothesis import assume
 from hypothesis.strategies import (
-    assume, booleans, composite, dictionaries, floats, integers, lists, none,
+    booleans, composite, dictionaries, floats, integers, lists, none,
     one_of, sampled_from, text, tuples)
 
 
